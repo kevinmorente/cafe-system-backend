@@ -9,7 +9,8 @@ function authenticationToken(req, res, next) {
     } else {
         jwt.verify(token, process.env.ACCESS_TOKEN, (err, response) => {
             if (err) {
-                return res.sendStatus(403);
+                console.log('TOKEN VERIFICATION FAILED');
+                return res.sendStatus(403)
             } else {
                 res.locals = response;
                 next();
