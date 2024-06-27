@@ -10,3 +10,9 @@ CREATE TABLE user(
 );
 
 INSERT INTO user(NAME,contactNumber,email,password,status,role) VALUES('admin','123123123','admin@admin.com','123','true','admin');
+
+CREATE TABLE category(
+    id int NOT NULL AUTO_INCREMENT,
+    name varchar(250),
+    PRIMARY KEY (id)
+);
