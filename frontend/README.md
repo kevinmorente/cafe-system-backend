@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+If you have some previus version of node and have some issues, use this commands below
+
+Linux and macOS (Windows Git Bash)-
+export NODE_OPTIONS=--openssl-legacy-provider
+
+
+Windows command prompt-
+set NODE_OPTIONS=--openssl-legacy-provider
+
+
+Windows PowerShell-
+$env:NODE_OPTIONS = "--openssl-legacy-provider"

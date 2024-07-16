@@ -29,8 +29,16 @@ router.get('/details', auth.authenticationToken, (req, res, next) => {
     connection.query(query, (err, result) => {
         if (!err) {
             billCount = result[0].billCount;
+            var data = {
+                categoryCount: categoryCount,
+                productCount: productCount,
+                billCount: billCount
+            }
+            return res.status(200).json(data);
         } else {
             return res.status(500).json(err);
         }
     })
 })
+
+module.exports = router;
