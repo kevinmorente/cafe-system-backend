@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 import { FormGroup, Validators } from '@angular/forms';
 import { GlobalConstants } from '../shared/gobal-constant';
+import { SnackbarService } from '../services/snackbar.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
+
 
 @Component({
   selector: 'app-signup',
@@ -44,7 +46,21 @@ export class SignupComponent implements OnInit {
       contact_number: formData.contactNumber,
       password: formData.password
     }
-    this.userService.signup(data);
+    this.userService.signup(data).subscribe((response:any)=>{
+      this.ngxService.stop();
+      this.dialogRef.close();
+      this.responseMessage = response?.message;
+      this.snackbarService.openSnackBar(response.message, '');
+      this.router.navigate(['/']);
+    },(error)=>{
+      this.ngxService.stop();
+      if(error.error?.message){
+        this.responseMessage = error.error?.message;
+      }else{
+        this.responseMessage = GlobalConstants.genericError;
+      }
+      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+    });
   }
 
 }
