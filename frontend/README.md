@@ -1,40 +1,28 @@
-# Frontend
+## PROJETO EM DESENVOLVIMENTO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
+## Frontend + Backend + Banco de Dados ( Angular, Node.js, MySQL ) 
 
-## Development server
+Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-cli) versão 11.2.9.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Servidor de Desenvolvimento
 
-## Code scaffolding
+Execute `ng serve` para iniciar um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Compilação
 
-## Build
+Execute `ng build` para compilar o projeto. Os artefatos de compilação serão armazenados no diretório `dist/`. Use a opção `--prod` para uma compilação de produção.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Ajuda Adicional
 
-## Running unit tests
+Para obter mais ajuda sobre o Angular CLI, use `ng help` ou visite a página de [Visão Geral e Referência de Comandos do Angular CLI](https://angular.io/cli).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-If you have some previus version of node and have some issues, use this commands below
+## Se você tiver algum problema de compatibilidade use os comandos abaixo
 
 Linux and macOS (Windows Git Bash)-
 export NODE_OPTIONS=--openssl-legacy-provider
 
-
 Windows command prompt-
 set NODE_OPTIONS=--openssl-legacy-provider
-
 
 Windows PowerShell-
 $env:NODE_OPTIONS = "--openssl-legacy-provider"
