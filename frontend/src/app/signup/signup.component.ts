@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalConstants } from '../shared/gobal-constant';
 import { SnackbarService } from '../services/snackbar.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 
 
 
@@ -16,11 +17,11 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 })
 
 export class SignupComponent implements OnInit {
-  [x: string]: any;
   signupForm: any = FormGroup;
   responseMessage: any;
 
   constructor(
+    private FormBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
     private snackbarService: SnackbarService,
@@ -29,7 +30,7 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.signupForm = this.formBuild.group({
+    this.signupForm = this.FormBuilder.group({
       name: [null, [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]],
       email: [null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
       contactNumber: [null, [Validators.required, Validators.pattern(GlobalConstants.contactNumberRegex)]],
@@ -37,29 +38,29 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  handleSubmit(){
+  handleSubmit() {
     this.ngxService.start();
     var formData = this.signupForm.value;
     var data = {
       name: formData.name,
       email: formData.email,
-      contact_number: formData.contactNumber,
+      contactNumber: formData.contactNumber,
       password: formData.password
     }
-    this.userService.signup(data).subscribe((response:any)=>{
+    this.userService.signup(data).subscribe((response: any) => {
       this.ngxService.stop();
       this.dialogRef.close();
       this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar(response.message, '');
+      this.snackbarService.openSnackbar(response.message, '');
       this.router.navigate(['/']);
-    },(error)=>{
+    }, (error) => {
       this.ngxService.stop();
-      if(error.error?.message){
+      if (error.error?.message) {
         this.responseMessage = error.error?.message;
-      }else{
+      } else {
         this.responseMessage = GlobalConstants.genericError;
       }
-      this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      this.snackbarService.openSnackbar(this.responseMessage, GlobalConstants.error);
     });
   }
 

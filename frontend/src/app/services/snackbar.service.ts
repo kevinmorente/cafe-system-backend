@@ -4,10 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SnackbarService {
-  openSnackBar(message: any, arg1: string) {
-    throw new Error('Method not implemented.');
-  }
 
   constructor(private snackbar: MatSnackBar) { }
 
@@ -19,13 +17,13 @@ export class SnackbarService {
         duration: 2000,
         panelClass: ['black-snackbar']
       });
-    } else (
+    } else {
       this.snackbar.open(message, '', {
         horizontalPosition: 'center',
         verticalPosition: 'top',
         duration: 2000,
         panelClass: ['green-snackbar']
-      })
-    )
+      });
+    }
   }
 }
